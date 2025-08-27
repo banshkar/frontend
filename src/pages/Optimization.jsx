@@ -39,16 +39,16 @@ export default function Optimization() {
   const getSuggestions = () => {
     const suggestions = [];
     if (metrics.kilnTemp > 1200) {
-      suggestions.push("🔥 Kiln running hot: consider adjusting fuel feed.");
+      suggestions.push("Kiln running hot: consider adjusting fuel feed.");
     }
     if (metrics.vibration > 7) {
-      suggestions.push("⚙️ High vibration: schedule motor alignment check.");
+      suggestions.push("High vibration: schedule motor alignment check.");
     }
     if (metrics.efficiency < 85) {
-      suggestions.push("📉 Efficiency low: optimize raw mix feed ratio.");
+      suggestions.push("Efficiency low: optimize raw mix feed ratio.");
     }
     if (suggestions.length === 0) {
-      suggestions.push("✅ Plant running optimally.");
+      suggestions.push("Plant running optimally.");
     }
     return suggestions;
   };

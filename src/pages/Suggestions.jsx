@@ -2,14 +2,14 @@ export default function Suggestions({ metrics }) {
   const getSuggestions = () => {
     const suggestions = [];
     if (metrics.kilnTemp > 1200)
-      suggestions.push("🔥 Kiln running hot: adjust fuel feed.");
+      suggestions.push("Kiln running hot: adjust fuel feed.");
     if (metrics.vibration > 7)
-      suggestions.push("⚙️ High vibration: check motor alignment.");
+      suggestions.push(" High vibration: check motor alignment.");
     if (metrics.efficiency < 85)
-      suggestions.push("📉 Efficiency low: optimize raw mix.");
+      suggestions.push("Efficiency low: optimize raw mix.");
     if (metrics.co2 > 400)
       suggestions.push("🌱 CO₂ high: increase alternative fuel.");
-    if (suggestions.length === 0) suggestions.push("✅ Plant running optimally.");
+    if (suggestions.length === 0) suggestions.push(" Plant running optimally.");
     return suggestions;
   };
 

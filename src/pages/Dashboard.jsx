@@ -43,7 +43,7 @@ export default function Dashboard() {
   return (
     <div className="bg-gray-900 text-gray-100 min-h-screen p-8">
       <h1 className="text-2xl font-extrabold text-center mb-10 text-blue-400 tracking-wide">
-        Cement Plant IoT Dashboard
+        Cement Plant Live IoT Dashboard
       </h1>
 
       {/* KPI Cards */}

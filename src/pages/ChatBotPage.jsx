@@ -16,9 +16,9 @@ export default function ChatBotPopup() {
 
     let botReply = "I'm not sure. Try checking KPI trends.";
     if (input.toLowerCase().includes("co2")) {
-      botReply = "🔹 CO₂ Optimization: Reduce kiln temp, optimize alternative fuel.";
+      botReply = "CO₂ Optimization: Reduce kiln temp, optimize alternative fuel.";
     } else if (input.toLowerCase().includes("efficiency")) {
-      botReply = "🔹 Efficiency: Adjust raw feed mix and grinding speed.";
+      botReply = "Efficiency: Adjust raw feed mix and grinding speed.";
     }
 
     setMessages(prev => [...prev, { from: "bot", text: botReply }]);
