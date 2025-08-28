@@ -1,7 +1,7 @@
 // src/components/ChatBotPopup.jsx
 import { useState } from "react";
 
-export default function ChatBotPopup() {
+export default function ChatBotPopup({ applyRecommendation }) {
   const [messages, setMessages] = useState([
     { from: "bot", text: "Hello! I can help you with plant optimization." }
   ]);
@@ -14,14 +14,21 @@ export default function ChatBotPopup() {
     const userMsg = { from: "user", text: input };
     setMessages(prev => [...prev, userMsg]);
 
-    let botReply = "I'm not sure. Try checking KPI trends.";
+    let botReply = { text: "I'm not sure. Try checking KPI trends.", action: null };
+
     if (input.toLowerCase().includes("co2")) {
-      botReply = "CO₂ Optimization: Reduce kiln temp, optimize alternative fuel.";
+      botReply = {
+        text: "CO₂ Optimization: Reduce kiln temp, optimize alternative fuel.",
+        action: () => applyRecommendation({ kilnTemp: -50 }) // example action
+      };
     } else if (input.toLowerCase().includes("efficiency")) {
-      botReply = "Efficiency: Adjust raw feed mix and grinding speed.";
+      botReply = {
+        text: "Efficiency: Adjust raw feed mix and grinding speed.",
+        action: () => applyRecommendation({ feederRate: +20 }) // example action
+      };
     }
 
-    setMessages(prev => [...prev, { from: "bot", text: botReply }]);
+    setMessages(prev => [...prev, { from: "bot", ...botReply }]);
     setInput("");
   };
 
@@ -53,6 +60,15 @@ export default function ChatBotPopup() {
                 >
                   {msg.text}
                 </span>
+                {/* Render Apply button for actionable bot messages */}
+                {msg.from === "bot" && msg.action && (
+                  <button
+                    className="ml-2 mt-1 bg-green-500 text-black px-2 py-1 rounded text-sm"
+                    onClick={msg.action}
+                  >
+                    Apply
+                  </button>
+                )}
               </div>
             ))}
           </div>

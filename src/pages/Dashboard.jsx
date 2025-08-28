@@ -14,6 +14,12 @@ export default function Dashboard() {
   });
 
   const [history, setHistory] = useState([]);
+    const applyRecommendation = (changes) => {
+    setData(prev => ({ ...prev, ...Object.keys(changes).reduce((acc, key) => {
+      acc[key] = Math.max(0, (prev[key] + changes[key])); // ensure no negative values
+      return acc;
+    }, {})}));
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -126,7 +132,7 @@ export default function Dashboard() {
             </PieChart>
           </ResponsiveContainer>
         </ChartCard>
-        <ChatBotPopup />
+          <ChatBotPopup applyRecommendation={applyRecommendation} />
       </div>
     </div>
   );
